@@ -1,10 +1,7 @@
-FROM debian:jessie
-MAINTAINER Ilya Makarov <im@e11it.ru>
+FROM ubuntu:latest
+MAINTAINER QAutomatron
 
-LABEL version="0.8.3"
-
-ENV PROXY_VER=0.8.3
-
+ENV PROXY_VER=0.8.6
 
 RUN apt-get -q update &&\
 	DEBIAN_FRONTEND=noninteractive &&\
