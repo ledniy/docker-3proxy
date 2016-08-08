@@ -3,7 +3,7 @@
 # Installation
 
 ```sh
-docker pull e11it/docker-3proxy:latest
+docker pull qautomatron/docker-3proxy:latest
 ```
 
 # Usage
@@ -11,21 +11,21 @@ docker pull e11it/docker-3proxy:latest
 ## Simple:
 
 ```sh
-docker run -d --name='3proxy' -P e11it/docker-3proxy
+docker run -d --name='3proxy' -P qautomatron/docker-3proxy
 ```
 
 ## Advance:
 Use custom 3proxy.cfg 
 
 ```sh
-docker run --name='3proxy' -v $(pwd)/3proxy.cfg:/etc/3proxy/3proxy:ro -p 8080:8080 e11it/docker-3proxy
+docker run --name='3proxy' -v $(pwd)/3proxy.cfg:/etc/3proxy/3proxy:ro -p 8080:8080 qautomatron/docker-3proxy
 ```
 
 # Example docker-compose.yml
 
 ```yml
 3proxy:
-  image: e11it/docker-3proxy:latest
+  image: qautomatron/docker-3proxy:latest
   container_name: 3proxy
   restart: always
   ports:
