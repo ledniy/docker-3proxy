@@ -1,7 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER QAutomatron
 
-ENV PROXY_VER=0.8.6
+ENV PROXY_VER=0.8.8
+ENV login=ledniy
+ENV password=7728822
 
 RUN apt-get -q update &&\
 	DEBIAN_FRONTEND=noninteractive &&\
@@ -21,14 +23,19 @@ RUN apt-get -q update &&\
 	# Clean
 	apt-get purge -y --auto-remove build-essential wget &&\
 	apt-get clean &&\
-	rm -rf /var/lib/apt/lists/* /tmp/*
+	rm -rf /var/lib/apt/lists/* /tmp/* &&\
+	mkdir /var/log/3proxy/
 
 # Add config file
 ADD 3proxy.cfg /etc/3proxy/3proxy.cfg
 
 # Ports
-EXPOSE 8080 3128
+#EXPOSE 8080 3128
 
 STOPSIGNAL SIGTERM
+
+COPY entry.sh /
+RUN chmod +x /entry.sh
+ENTRYPOINT ["/entry.sh"]
 
 CMD [ "/usr/local/bin/3proxy", "/etc/3proxy/3proxy.cfg" ]
